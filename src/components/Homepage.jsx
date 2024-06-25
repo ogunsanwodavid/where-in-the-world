@@ -71,7 +71,7 @@ function Homepage({ isDarkMode, countriesInfo, setCountriesInfo }) {
   return (
     <div className="w-full px-6 py-5 bg-lightMode-verylightgray dark:bg-darkMode-verydarkblue lg:px-[calc((100%-1200px)/2)]">
       {/**** Form */}
-      <form className="w-full space-y-7 text-[19px] lg:flex lg:space-y-0 lg:justify-between">
+      <form className="w-full space-y-7 text-lg lg:flex lg:space-y-0 lg:justify-between">
         {/*** Search Input */}
         <div
           className="w-full max-w-[500px] bg-white px-8 py-1 flex items-center space-x-4 rounded-lg dark:bg-darkMode-darkblue"

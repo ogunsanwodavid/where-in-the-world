@@ -35,10 +35,10 @@ function Select({
   }
 
   return (
-    <div className="relative max-w-[320px] cursor-pointer" ref={selectRef}>
+    <div className="relative w-[230px] cursor-pointer" ref={selectRef}>
       {/*** Controls section */}
       <section
-        className="w-full  bg-white space-x-4 px-8 py-4 flex items-center justify-between rounded-lg dark:bg-darkMode-darkblue dark:text-white"
+        className="w-full  bg-white px-8 py-4 flex items-center justify-between rounded-lg dark:bg-darkMode-darkblue dark:text-white"
         style={{
           boxShadow: "0 0 4px rgba(0, 0, 0, 0.2)",
         }}

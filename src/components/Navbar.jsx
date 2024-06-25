@@ -18,7 +18,7 @@ function Navbar({ isDarkMode, setIsDarkMode }) {
       {/*** Logo */}
       <Link
         to="/"
-        className="text-lightMode-verydarkblue text-xl font-extrabold dark:text-white md:text-2xl"
+        className="text-lightMode-verydarkblue text-lg font-extrabold dark:text-white md:text-2xl"
       >
         <h1>Where in the world?</h1>
       </Link>
@@ -34,7 +34,7 @@ function Navbar({ isDarkMode, setIsDarkMode }) {
           className="h-5 md:h-7"
         />
 
-        <p className="text-lightMode-verydarkblue text-lg font-medium dark:text-white md:text-xl">
+        <p className="text-lightMode-verydarkblue text-base font-medium dark:text-white md:text-lg">
           {isDarkMode ? "Dark Mode" : "Light Mode"}
         </p>
       </section>
