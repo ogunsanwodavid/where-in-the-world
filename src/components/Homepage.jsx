@@ -14,15 +14,6 @@ function Homepage({ isDarkMode, countriesInfo, setCountriesInfo }) {
     useState(countriesInfo);
   const [regionFilter, setRegionFilter] = useState("");
 
-  //Function to shuffle the items in an array
-  function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]]; // Swap elements
-    }
-    return array;
-  }
-
   //Fetches countries info from the server
   useEffect(() => {
     async function fetchCountries() {
@@ -31,10 +22,20 @@ function Homepage({ isDarkMode, countriesInfo, setCountriesInfo }) {
         const res = await fetch("https://restcountries.com/v3.1/all");
         const data = await res.json();
 
-        //Set countries info the shuffled version of the array
-        setCountriesInfo(shuffleArray(data));
+        //Set countries info the sorted version of the array alphabetically
+        setCountriesInfo(
+          data.sort((a, b) => {
+            if (a.name.common.toLowerCase() < b.name.common.toLowerCase()) {
+              return -1;
+            }
+            if (a.name.common.toLowerCase() > b.name.common.toLowerCase()) {
+              return 1;
+            }
+            return 0;
+          })
+        );
       } catch (err) {
-        console.err(err);
+        console.error(err);
       } finally {
         setIsLoading(false);
       }
