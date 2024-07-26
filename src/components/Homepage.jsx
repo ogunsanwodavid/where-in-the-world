@@ -73,7 +73,7 @@ function Homepage({ isDarkMode, countriesInfo, setCountriesInfo }) {
 
   //For error handling
   useEffect(() => {
-    if (!isLoading && filteredCountriesInfo.length === 0)
+    if (filteredCountriesInfo.length === 0)
       setError("Failed to fetch countries");
     if (searchQuery && filteredCountriesInfo.length === 0)
       setError("No Results Found");
@@ -165,7 +165,7 @@ function Homepage({ isDarkMode, countriesInfo, setCountriesInfo }) {
           })}
 
         {/**Renders if an error exists */}
-        {error && (
+        {!isLoading && error && (
           <h2 className="w-max mx-auto text-lightMode-verydarkblue text-xl font-extrabold dark:text-white">
             {error}
           </h2>
