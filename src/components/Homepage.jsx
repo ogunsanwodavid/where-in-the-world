@@ -77,6 +77,7 @@ function Homepage({ isDarkMode, countriesInfo, setCountriesInfo }) {
       setError("Failed to fetch countries");
     if (searchQuery && filteredCountriesInfo.length === 0)
       setError("No Results Found");
+    if (filteredCountriesInfo.length !== 0) setError("");
   }, [isLoading, searchQuery, filteredCountriesInfo]);
 
   return (
