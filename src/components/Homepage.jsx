@@ -73,11 +73,11 @@ function Homepage({ isDarkMode, countriesInfo, setCountriesInfo }) {
 
   //For error handling
   useEffect(() => {
-    if (filteredCountriesInfo.length === 0)
+    if (!isLoading && filteredCountriesInfo.length === 0)
       setError("Failed to fetch countries");
     if (searchQuery && filteredCountriesInfo.length === 0)
       setError("No Results Found");
-  }, [searchQuery, filteredCountriesInfo]);
+  }, [isLoading, searchQuery, filteredCountriesInfo]);
 
   return (
     <div className="w-full px-6 py-5 bg-lightMode-verylightgray dark:bg-darkMode-verydarkblue lg:px-[calc((100%-1200px)/2)]">
