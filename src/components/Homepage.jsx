@@ -8,6 +8,7 @@ import Select from "./Select";
 
 function Homepage({ isDarkMode, countriesInfo, setCountriesInfo }) {
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredCountriesInfo, setFilteredCountriesInfo] =
@@ -36,6 +37,7 @@ function Homepage({ isDarkMode, countriesInfo, setCountriesInfo }) {
         );
       } catch (err) {
         console.error(err);
+        setError("Failed to fetch countries");
       } finally {
         setIsLoading(false);
       }
@@ -69,10 +71,18 @@ function Homepage({ isDarkMode, countriesInfo, setCountriesInfo }) {
     setFilteredCountriesInfo,
   ]);
 
+  //For error handling
+  useEffect(() => {
+    if (filteredCountriesInfo.length === 0)
+      setError("Failed to fetch countries");
+    if (searchQuery && filteredCountriesInfo.length === 0)
+      setError("No Results Found");
+  }, [searchQuery, filteredCountriesInfo]);
+
   return (
     <div className="w-full px-6 py-5 bg-lightMode-verylightgray dark:bg-darkMode-verydarkblue lg:px-[calc((100%-1200px)/2)]">
       {/**** Form */}
-      <form className="w-full space-y-7 text-lg lg:flex lg:space-y-0 lg:justify-between">
+      <form className="w-full space-y-7 text-base md:text-lg lg:flex lg:space-y-0 lg:justify-between">
         {/*** Search Input */}
         <div
           className="w-full max-w-[500px] bg-white px-8 py-1 flex items-center space-x-4 rounded-lg dark:bg-darkMode-darkblue"
@@ -88,7 +98,7 @@ function Homepage({ isDarkMode, countriesInfo, setCountriesInfo }) {
 
           <input
             type="text"
-            className="w-full p-3 bg-transparent placeholder:text-lightMode-darkgray placeholder:text-[19px] dark:text-white dark:placeholder:text-white"
+            className="w-full p-3 bg-transparent placeholder:text-lightMode-darkgray  dark:text-white dark:placeholder:text-white"
             placeholder="Search for a country..."
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -154,10 +164,10 @@ function Homepage({ isDarkMode, countriesInfo, setCountriesInfo }) {
             );
           })}
 
-        {/** Renders if filtered countries information is zero */}
-        {searchQuery && filteredCountriesInfo.length === 0 && (
+        {/**Renders if an error exists */}
+        {error && (
           <h2 className="w-max mx-auto text-lightMode-verydarkblue text-xl font-extrabold dark:text-white">
-            No Results Found
+            {error}
           </h2>
         )}
       </ul>

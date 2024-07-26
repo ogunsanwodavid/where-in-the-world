@@ -80,6 +80,7 @@ function Select({
             } else {
               setValue(option);
             }
+            setIsMenuOpen(false);
           }
           return (
             <li

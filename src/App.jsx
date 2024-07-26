@@ -8,18 +8,13 @@ import Navbar from "./components/Navbar";
 import CountryDetails from "./components/CountryDetails";
 
 function App() {
+  //Sets isDarkMode based on system settings
   const [isDarkMode, setIsDarkMode] = useState(
-    localStorage.theme === "dark" ? true : false
+    window.matchMedia("(prefers-color-scheme: dark)").matches
   );
 
   //This controls the light and dark mode themes
   useEffect(() => {
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      localStorage.theme = "dark";
-    } else {
-      localStorage.theme = "light";
-    }
-
     if (isDarkMode) {
       localStorage.theme = "dark";
     } else {
