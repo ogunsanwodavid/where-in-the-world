@@ -58,54 +58,54 @@ function CountryDetails({ isDarkMode, countriesInfo }) {
       <main className="w-full mt-12 lg:flex lg:items-center lg:justify-between lg:space-x-32 lg:mt-6">
         {/** Country flag */}{" "}
         <img
-          src={country.flags.svg}
+          src={country?.flags.svg}
           className="w-full lg:w-[450px] lg:h-[300px] object-cover"
-          alt={country.flags.alt}
+          alt={country?.flags.alt}
         />
         {/**Other information */}
         <section className="mt-8 space-y-6 text-lightMode-verydarkblue dark:text-white">
-          <h2 className="text-2xl  font-extrabold">{country.name.common}</h2>
+          <h2 className="text-2xl  font-extrabold">{country?.name.common}</h2>
 
           <div className="space-y-5 text-lg lg:flex lg:space-y-0 lg:space-x-16">
             <div className="space-y-2">
               <p>
                 <span className="font-bold">Native Name:</span>{" "}
-                {getFirstItem(country.name.nativeName).value.official}
+                {getFirstItem(country?.name.nativeName).value.official}
               </p>
               <p>
                 <span className="font-bold">Population:</span>{" "}
-                {country.population.toLocaleString()}
+                {country?.population.toLocaleString()}
               </p>
               <p>
-                <span className="font-bold">Region:</span> {country.region}
+                <span className="font-bold">Region:</span> {country?.region}
               </p>
               <p>
                 <span className="font-bold">Sub Region:</span>{" "}
-                {country.subregion}
+                {country?.subregion}
               </p>
               <p>
-                <span className="font-bold">Capital:</span> {country.capital}
+                <span className="font-bold">Capital:</span> {country?.capital}
               </p>
             </div>
 
             <div className="space-y-2">
               <p>
                 <span className="font-bold">Top Level Domain:</span>{" "}
-                {country.tld.at(0)}
+                {country?.tld.at(0)}
               </p>
 
               {/**** Displays all currencies used by the country with comma formatting*/}
               <p>
                 <span className="font-bold">Currencies:</span>{" "}
-                {Object.keys(country.currencies).map((curr, index) => {
-                  const currency = country.currencies[curr];
+                {Object.keys(country?.currencies).map((curr, index) => {
+                  const currency = country?.currencies[curr];
                   const currenciesLength = Object.keys(
-                    country.currencies
+                    country?.currencies
                   ).length;
 
                   return (
                     <span key={index}>
-                      {currency.name}
+                      {currency?.name}
                       {!(currenciesLength - 1 === index) ? ", " : ""}
                     </span>
                   );
